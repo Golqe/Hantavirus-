@@ -1,0 +1,13 @@
+{
+  "name": "hantavirus",
+  "version": "1.0.0",
+  "description": "Informative Onepager-Seite zum Hantavirus",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static HTML - no build required'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.0"
+  }
+}

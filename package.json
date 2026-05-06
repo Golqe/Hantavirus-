@@ -1,0 +1,27 @@
+{
+  "name": "hantavirus-info",
+  "version": "1.0.0",
+  "description": "Informative website about Hantavirus with Vercel Speed Insights",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests configured\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Golqe/Hantavirus-.git"
+  },
+  "keywords": [
+    "hantavirus",
+    "health",
+    "information"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Golqe/Hantavirus-/issues"
+  },
+  "homepage": "https://github.com/Golqe/Hantavirus-#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}

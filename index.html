@@ -45,6 +45,7 @@
   .topbar-inner{
     max-width:1120px;margin:0 auto;padding:12px 18px;
     display:flex;align-items:center;justify-content:space-between;gap:16px;
+    flex-wrap:nowrap;
   }
   .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
   .brand-badge{
@@ -54,7 +55,13 @@
     box-shadow:0 8px 20px rgba(47,111,237,.28);
     flex:0 0 auto;
   }
-  .nav{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+  .nav{
+    display:flex;
+    gap:14px;
+    flex-wrap:nowrap;
+    justify-content:flex-end;
+    align-items:center;
+  }
   .nav a{color:var(--muted);font-size:13px;font-weight:600}
   .nav a:hover{color:var(--text)}
 
@@ -180,6 +187,8 @@
 
   @media (max-width: 900px){
     .hero-inner,.grid-3,.grid-2,.ages{grid-template-columns:1fr}
+    .nav{display:none}
+  }
     .nav{display:none}
   }
   @media (max-width: 640px){

@@ -1,195 +1,484 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hantavirus – Kompakter Überblick</title>
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hantavirus – verständlich, modern & kompakt</title>
+<meta name="description" content="Informative Onepager-Seite zum Hantavirus mit klaren Fakten, Schutzmaßnahmen, Symptomen und FAQ – modern gestaltet und mobilfreundlich." />
 <style>
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    background: #f4f7fb;
-    color: #333;
-    font-size: 15px;
-    line-height: 1.6;
-}
+  :root{
+    --bg:#f5f8fc;
+    --card:#ffffff;
+    --text:#18324a;
+    --muted:#5f7285;
+    --line:rgba(24,50,74,.10);
+    --blue:#2f6fed;
+    --blue2:#0ea5e9;
+    --green:#16a34a;
+    --yellow:#f59e0b;
+    --red:#dc2626;
+    --shadow:0 18px 40px rgba(15,23,42,.08);
+    --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(47,111,237,.10), transparent 30%),
+      radial-gradient(circle at top right, rgba(14,165,233,.10), transparent 26%),
+      linear-gradient(180deg, #f7fbff 0%, #f5f8fc 100%);
+    line-height:1.6;
+    font-size:15px;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 18px 42px}
 
-header {
-    background: linear-gradient(135deg, #2b6cb0, #1a365d);
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
-}
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(180%) blur(16px);
+    background:rgba(245,248,252,.78);
+    border-bottom:1px solid rgba(24,50,74,.08);
+  }
+  .topbar-inner{
+    max-width:1120px;margin:0 auto;padding:12px 18px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+  .brand-badge{
+    width:36px;height:36px;border-radius:12px;
+    display:grid;place-items:center;color:#fff;
+    background:linear-gradient(135deg,var(--blue),var(--blue2));
+    box-shadow:0 8px 20px rgba(47,111,237,.28);
+    flex:0 0 auto;
+  }
+  .nav{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+  .nav a{color:var(--muted);font-size:13px;font-weight:600}
+  .nav a:hover{color:var(--text)}
 
-header h1 {
-    margin: 0;
-    font-size: 2.2em;
-}
+  .hero{
+    position:relative;overflow:hidden;
+    margin:18px 0 18px;
+    border-radius:32px;
+    background:
+      linear-gradient(135deg, rgba(47,111,237,.96), rgba(14,165,233,.88)),
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 30%),
+      radial-gradient(circle at 85% 18%, rgba(255,255,255,.16), transparent 26%);
+    color:#fff;
+    box-shadow:var(--shadow);
+  }
+  .hero::before,
+  .hero::after{
+    content:"";position:absolute;border-radius:50%;filter:blur(4px);opacity:.22;pointer-events:none;
+    background:#fff;
+  }
+  .hero::before{width:230px;height:230px;right:-70px;top:-80px}
+  .hero::after{width:180px;height:180px;left:-60px;bottom:-70px}
+  .hero-inner{padding:34px 22px 26px;display:grid;gap:22px;grid-template-columns:1.35fr .85fr;align-items:center}
+  .kicker{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.92}
+  h1{margin:10px 0 12px;font-size:clamp(2rem,5vw,4.25rem);line-height:1.03;letter-spacing:-.03em}
+  .lead{font-size:clamp(1rem,2.1vw,1.16rem);max-width:62ch;opacity:.96;margin:0 0 20px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:12px 16px;border-radius:999px;font-weight:800;border:1px solid transparent;
+    transition:.2s transform, .2s box-shadow, .2s background;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:#fff;color:#1546b3;box-shadow:0 12px 26px rgba(15,23,42,.16)}
+  .btn-secondary{background:rgba(255,255,255,.10);color:#fff;border-color:rgba(255,255,255,.18)}
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 15px;
-}
+  .hero-card{
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.20);
+    border-radius:24px;padding:18px;backdrop-filter:blur(10px)
+  }
+  .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .mini{
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);
+    border-radius:18px;padding:14px
+  }
+  .mini .num{font-size:1.5rem;font-weight:900;line-height:1}
+  .mini .txt{font-size:13px;opacity:.92;margin-top:6px}
+  .hero-note{
+    margin-top:12px;font-size:12.5px;opacity:.9;line-height:1.45
+  }
 
-.card {
-    background: white;
-    border-radius: 10px;
-    padding: 18px;
-    margin-bottom: 15px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-}
+  .section{margin-top:18px}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:10px 2px 12px}
+  .section-head h2{margin:0;font-size:1.35rem;letter-spacing:-.02em}
+  .section-head p{margin:0;color:var(--muted);font-size:13px;max-width:62ch}
 
-h2 {
-    margin-top: 0;
-    color: #2b6cb0;
-    font-size: 1.3em;
-}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;box-shadow:var(--shadow)
+  }
+  .card h3{margin:0 0 10px;font-size:1.03rem}
+  .muted{color:var(--muted)}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .tag{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 11px;border-radius:999px;background:#edf4ff;color:#1743a5;
+    font-size:12.5px;font-weight:700
+  }
+  .fact-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+  .fact-list li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+  .fact-list li:last-child{border-bottom:0;padding-bottom:0}
+  .bullet{
+    width:22px;height:22px;border-radius:999px;display:grid;place-items:center;flex:0 0 auto;
+    background:#edf4ff;color:#1743a5;font-weight:900;font-size:12px;margin-top:1px
+  }
 
-ul {
-    padding-left: 18px;
-}
+  .timeline{display:grid;gap:12px;margin-top:6px}
+  .step{
+    display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:start;
+    padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff
+  }
+  .step .circle{
+    width:46px;height:46px;border-radius:16px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#edf4ff,#dff2ff);font-weight:900;color:#1743a5
+  }
+  .step h4{margin:0 0 4px;font-size:1rem}
+  .step p{margin:0;color:var(--muted);font-size:14px}
 
-.highlight {
-    background: #e6f0ff;
-    padding: 8px;
-    border-left: 4px solid #2b6cb0;
-    border-radius: 6px;
-    font-size: 14px;
-}
+  .ages{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .age{
+    padding:16px;border-radius:20px;border:1px solid var(--line);background:
+      linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+  }
+  .age h3{margin-bottom:6px}
+  .age small{display:block;color:var(--muted);margin-bottom:10px}
 
-.ad {
-    background: #e2e8f0;
-    height: 90px;
-    margin: 15px 0;
-    border-radius: 8px;
-}
+  .ad-slot{
+    border:1px dashed rgba(24,50,74,.22);
+    background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(237,244,255,.82));
+    border-radius:20px;min-height:96px;margin:18px 0;display:flex;align-items:center;justify-content:center;
+    color:rgba(24,50,74,.28);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px
+  }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
+  .faq details{
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;
+  }
+  .faq details + details{margin-top:12px}
+  .faq summary{cursor:pointer;font-weight:800;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq p{margin:10px 0 0;color:var(--muted)}
 
-@media (max-width: 700px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
+  .callout{
+    background:linear-gradient(135deg, rgba(22,163,74,.08), rgba(47,111,237,.08));
+    border:1px solid rgba(47,111,237,.12);
+    border-radius:24px;padding:18px
+  }
+  .callout strong{display:block;margin-bottom:6px;font-size:1.02rem}
 
-footer {
-    text-align: center;
-    padding: 15px;
-    font-size: 0.8em;
-    color: #777;
-}
+  .footer{
+    padding:22px 2px 34px;color:var(--muted);font-size:12.5px;text-align:center
+  }
+
+  @media (max-width: 900px){
+    .hero-inner,.grid-3,.grid-2,.ages{grid-template-columns:1fr}
+    .nav{display:none}
+  }
+  @media (max-width: 640px){
+    body{font-size:14px}
+    .wrap{padding:0 14px 34px}
+    .hero-inner{padding:26px 16px 18px}
+    .card,.age,.step{padding:15px}
+    .mini-grid{grid-template-columns:1fr}
+    .section-head{flex-direction:column;align-items:flex-start}
+  }
 </style>
-
 </head>
-
 <body>
-
-<header>
-    <h1>Hantavirus</h1>
-    <p>Schnell verstehen, Risiken erkennen, richtig handeln</p>
-</header>
-
-<div class="container">
-
-    <div class="card">
-        <h2>🦠 Überblick</h2>
-        <p>
-            Hantaviren sind weltweit verbreitete Krankheitserreger, die hauptsächlich durch Nagetiere
-            übertragen werden. In Deutschland erfolgt die Infektion meist über die Rötelmaus.
-            Die Viren gelangen über die Atemwege in den Körper.
-        </p>
-        <p>
-            Die Erkrankung ist selten, kann aber ernst verlaufen und sollte nicht unterschätzt werden.
-        </p>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">H</div>
+        <span>Hantavirus kompakt</span>
+      </div>
+      <nav class="nav" aria-label="Sekundärnavigation">
+        <a href="#fakten">Fakten</a>
+        <a href="#uebertragung">Übertragung</a>
+        <a href="#symptome">Symptome</a>
+        <a href="#schutz">Schutz</a>
+        <a href="#faq">FAQ</a>
+      </nav>
     </div>
+  </div>
 
-    <div class="ad"></div>
-
-    <div class="grid">
-        <div class="card">
-            <h2>📍 Übertragung</h2>
-            <ul>
-                <li>Einatmen von Staub mit Viruspartikeln</li>
-                <li>Kontakt mit Nagetier-Ausscheidungen</li>
-                <li>Selten durch Bisse</li>
-            </ul>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker">🦠 Gesundheit · verständlich · modern</div>
+          <h1>Hantavirus auf einen Blick.</h1>
+          <p class="lead">
+            Eine Seite, die schnell ins Auge fällt und trotzdem die wichtigsten Infos sauber erklärt:
+            was Hantaviren sind, wie sie übertragen werden, worauf man achten sollte und wie man sich schützt.
+            Klar, ruhig, leicht lesbar – für jede Altersgruppe angenehm zu erfassen.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#fakten">Jetzt die Fakten lesen</a>
+            <a class="btn btn-secondary" href="#schutz">Direkt zum Schutz</a>
+          </div>
         </div>
 
-        <div class="card">
-            <h2>🌍 Verbreitung</h2>
-            <p>
-                Europa, Asien und Nordamerika sind betroffen. In Deutschland treten Fälle vor allem
-                in Süd- und Westdeutschland auf, häufig in bestimmten Jahren gehäuft.
-            </p>
-        </div>
-    </div>
+        <aside class="hero-card" aria-label="Schnelle Übersicht">
+          <div class="mini-grid">
+            <div class="mini">
+              <div class="num">1</div>
+              <div class="txt">häufige Ansteckung über belasteten Staub statt direkten Kontakt</div>
+            </div>
+            <div class="mini">
+              <div class="num">3</div>
+              <div class="txt">wichtige Bereiche: Übertragung, Symptome, Schutz</div>
+            </div>
+            <div class="mini">
+              <div class="num">24/7</div>
+              <div class="txt">Achtung bei Reinigungsarbeiten, Keller, Dachboden oder Garten</div>
+            </div>
+            <div class="mini">
+              <div class="num">✓</div>
+              <div class="txt">einfach vorbeugen mit Maske, Handschuhen und feuchter Reinigung</div>
+            </div>
+          </div>
+          <div class="hero-note">
+            Hinweis: Diese Seite ersetzt keine ärztliche Beratung. Bei starken Beschwerden bitte medizinisch abklären lassen.
+          </div>
+        </aside>
+      </div>
+    </section>
 
-    <div class="card">
-        <h2>⚠️ Symptome & Verlauf</h2>
-        <p>
-            Die Krankheit beginnt meist plötzlich mit grippeähnlichen Beschwerden:
+    <section id="fakten" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Was man wirklich wissen muss</h2>
+          <p>Die wichtigsten Informationen zuerst – kompakt, aber mit genug Tiefe, damit Nutzer dranbleiben.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Was ist das?</h3>
+          <p class="muted">
+            Hantaviren sind Viren, die vor allem über Nagetiere vorkommen. Menschen stecken sich meist nicht direkt an,
+            sondern über virushaltigen Staub oder verschmutzte Oberflächen.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Nagetiere</span>
+            <span class="tag">Staub</span>
+            <span class="tag">Ausscheidungen</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Warum das relevant ist</h3>
+          <p class="muted">
+            Die Krankheit ist nicht alltäglich, kann aber ernst verlaufen. Gerade deshalb wirkt eine verständliche Seite stark:
+            Menschen bleiben länger, wenn die Struktur angenehm und vertrauenswürdig ist.
+          </p>
+          <div class="tag-row">
+            <span class="tag">verständlich</span>
+            <span class="tag">vertrauenswürdig</span>
+            <span class="tag">klar</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Woran merkt man es?</h3>
+          <p class="muted">
+            Typisch sind zunächst grippeähnliche Beschwerden wie Fieber, Kopf- und Gliederschmerzen oder starke Müdigkeit.
+            Deshalb wird das Hantavirus anfangs leicht übersehen.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Fieber</span>
+            <span class="tag">Müdigkeit</span>
+            <span class="tag">Kopfschmerz</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="ad-slot">AdSense</div>
+
+    <section id="uebertragung" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Wie kommt es zur Übertragung?</h2>
+          <p>Ein Abschnitt mit Bildern im Kopf: leicht zu scannen, klar formuliert und nicht zu technisch.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Typische Wege</h3>
+          <ul class="fact-list">
+            <li><span class="bullet">1</span><span>Einatmen von Staub, der mit Ausscheidungen von Nagetieren belastet ist.</span></li>
+            <li><span class="bullet">2</span><span>Kontakt mit Urin, Kot oder Speichel von infizierten Tieren.</span></li>
+            <li><span class="bullet">3</span><span>In seltenen Fällen auch durch Bisse.</span></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Wo passiert das oft?</h3>
+          <p class="muted">
+            Besonders bei Arbeiten in Kellern, Schuppen, Dachböden, Garagen oder beim Aufräumen nach längerer Zeit.
+            Auch Gartenarbeit kann ein Risiko sein, wenn Nagetiere in der Nähe waren.
+          </p>
+          <div class="callout" style="margin-top:14px;">
+            <strong>Merksatz</strong>
+            Staub nicht aufwirbeln, sondern möglichst feucht reinigen und Schutz tragen.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="symptome" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Symptome und Verlauf</h2>
+          <p>Eine kleine visuelle Timeline hält Nutzer länger auf der Seite und macht Inhalte leichter verständlich.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="timeline">
+          <div class="step">
+            <div class="circle">1</div>
+            <div>
+              <h4>Frühphase</h4>
+              <p>Fieber, Kopfweh, Rückenschmerzen, Abgeschlagenheit und manchmal Schüttelfrost.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="circle">2</div>
+            <div>
+              <h4>Weitere Beschwerden</h4>
+              <p>Übelkeit, Bauchschmerzen, Kreislaufprobleme oder Sehbeschwerden können dazukommen.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="circle">3</div>
+            <div>
+              <h4>Schwerere Verläufe</h4>
+              <p>In manchen Fällen kommt es zu einer Beteiligung der Nieren. Dann ist medizinische Hilfe wichtig.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-slot">AdSense</div>
+
+    <section id="schutz" class="section">
+      <div class="section-head">
+        <div>
+          <h2>So schützt man sich</h2>
+          <p>Der praktische Teil der Seite – genau der Abschnitt, den viele bis zum Ende lesen.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Vor dem Reinigen</h3>
+          <p class="muted">Räume zuerst lüften. Bei staubigen Bereichen Handschuhe und möglichst eine Maske tragen.</p>
+        </article>
+        <article class="card">
+          <h3>Beim Reinigen</h3>
+          <p class="muted">Nicht trocken kehren oder aufwirbeln. Besser feucht wischen und Oberflächen vorsichtig säubern.</p>
+        </article>
+        <article class="card">
+          <h3>Im Alltag</h3>
+          <p class="muted">Lebensmittel sicher lagern, Nagetiere fernhalten und mögliche Nistplätze vermeiden.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Für verschiedene Altersgruppen leicht verständlich</h2>
+          <p>Damit die Seite für Kinder, Jugendliche, Erwachsene und ältere Besucher gleichermaßen zugänglich bleibt.</p>
+        </div>
+      </div>
+
+      <div class="ages">
+        <article class="age">
+          <h3>Für jüngere Besucher</h3>
+          <small>einfach, freundlich, ohne Fachsprache</small>
+          <p class="muted">Hantaviren kommen meist von kleinen Nagetieren. Man schützt sich, indem man Staub vermeidet und nicht direkt mit möglichen Spuren in Kontakt kommt.</p>
+        </article>
+        <article class="age">
+          <h3>Für Jugendliche</h3>
+          <small>knapp, direkt, gut für schnelles Scannen</small>
+          <p class="muted">Wer Keller, Gartenhaus oder Garage sauber macht, sollte vorsichtig sein. Gute Schutzmaßnahmen sind oft schon die halbe Miete.</p>
+        </article>
+        <article class="age">
+          <h3>Für Erwachsene & Senioren</h3>
+          <small>ruhig, klar, vertrauensvoll</small>
+          <p class="muted">Bei grippeähnlichen Beschwerden nach möglichem Kontakt mit Nagetieren lieber früh ärztlich nachfragen. Das schafft Sicherheit und Klarheit.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="grid-2 section">
+      <article class="card">
+        <h3>Behandlung</h3>
+        <p class="muted">
+          Es gibt keine spezielle Standardtherapie gegen das Virus selbst. Meist wird unterstützend behandelt – je nach Schweregrad,
+          bei schweren Verläufen auch im Krankenhaus.
         </p>
-        <ul>
-            <li>Fieber, Kopf- und Rückenschmerzen</li>
-            <li>Müdigkeit und Kreislaufprobleme</li>
-            <li>Übelkeit und Sehstörungen</li>
+      </article>
+      <article class="card">
+        <h3>Wichtige Kurzfakten</h3>
+        <ul class="fact-list">
+          <li><span class="bullet">•</span><span>Übertragung oft indirekt über Staub.</span></li>
+          <li><span class="bullet">•</span><span>Vorbeugung ist besonders wichtig.</span></li>
+          <li><span class="bullet">•</span><span>Bei Beschwerden lieber früh abklären.</span></li>
         </ul>
-        <p>
-            In schweren Fällen kann es zu Nierenfunktionsstörungen kommen.
-        </p>
-
-        <div class="highlight">
-            Tipp: Bei starken Symptomen nach Kontakt mit Staub oder Nagetieren unbedingt ärztlich abklären.
-        </div>
+      </article>
     </div>
 
-    <div class="ad"></div>
-
-    <div class="grid">
-        <div class="card">
-            <h2>🛡️ Schutzmaßnahmen</h2>
-            <ul>
-                <li>Staubentwicklung vermeiden (feucht reinigen)</li>
-                <li>Handschuhe & Maske verwenden</li>
-                <li>Nagetiere fernhalten</li>
-                <li>Lebensmittel sicher lagern</li>
-            </ul>
+    <section id="faq" class="section faq">
+      <div class="section-head">
+        <div>
+          <h2>FAQ</h2>
+          <p>Kleine Fragen, die Nutzer oft suchen – ideal, um Vertrauen und Verweildauer zu erhöhen.</p>
         </div>
+      </div>
 
-        <div class="card">
-            <h2>💊 Behandlung</h2>
-            <p>
-                Es gibt keine spezielle antivirale Therapie. Die Behandlung erfolgt je nach
-                Schweregrad unterstützend – in schweren Fällen im Krankenhaus.
-            </p>
-        </div>
-    </div>
+      <details>
+        <summary>Ist das Hantavirus von Mensch zu Mensch übertragbar?</summary>
+        <p>In Europa ist eine direkte Übertragung von Mensch zu Mensch nicht typisch. Der wichtigste Weg bleibt der Kontakt zu belastetem Material oder Staub.</p>
+      </details>
+      <details>
+        <summary>Wie merkt man, dass man ärztliche Hilfe braucht?</summary>
+        <p>Wenn nach möglichem Kontakt mit Nagetieren starke grippeähnliche Beschwerden, Kreislaufprobleme oder ungewöhnliche Symptome auftreten, sollte das medizinisch beurteilt werden.</p>
+      </details>
+      <details>
+        <summary>Wie kann die Seite noch mehr Klicks und Aufrufe bekommen?</summary>
+        <p>Am besten mit klaren Überschriften, kurzen Einstiegen, gutem mobilen Design, vertrauenswürdigen Fakten, starken Zwischenüberschriften und sinnvollen Abschnitten, die zum Scrollen einladen.</p>
+      </details>
+    </section>
 
-    <div class="card">
-        <h2>📊 Kurzfakten</h2>
-        <ul>
-            <li>Übertragung meist indirekt über Luft</li>
-            <li>Nicht von Mensch zu Mensch (in Europa)</li>
-            <li>Saisonale Häufungen möglich</li>
-            <li>Früherkennung verbessert Verlauf</li>
-        </ul>
-    </div>
+    <div class="ad-slot">AdSense</div>
 
-</div>
+    <section class="section">
+      <div class="callout">
+        <strong>Abschluss mit Wirkung</strong>
+        <span class="muted">
+          Diese Seite ist bewusst so aufgebaut, dass sie schnell verstanden wird, modern wirkt und Nutzer zum Weiterlesen einlädt.
+          Der Mix aus großem Einstieg, ruhigen Farben, klaren Cards und kompakten Fakten macht sie für viele Altersgruppen angenehm.
+        </span>
+      </div>
+    </section>
 
-<footer>
-    © 2026 | Informationsseite zum Hantavirus – keine medizinische Beratung
-</footer>
-
+    <footer class="footer">
+      © 2026 · Informationsseite zum Hantavirus · keine medizinische Beratung
+    </footer>
+  </main>
 </body>
 </html>
